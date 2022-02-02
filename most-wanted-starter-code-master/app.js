@@ -15,10 +15,12 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
+      searchResults = searchByTrait(people);
       // searchResults = searchByEyeColor(people);
       // searchResults = searchByGender(people);
       // searchResults = searchByDob(people);
-      // searchResults = searchByOccupation
+      // searchResults = searchByOccupation(people);
+      // searchResults = searchByHeight(people);
     // TODO: search by traits
       break;
       default:
@@ -105,7 +107,7 @@ function searchByEyeColor(people){
 //TODO: add other trait filter functions here.
 
 function searchByGender(people){
-  let gender = promptFor("What is the person's gender? Male or Female", autoValid);
+  let gender = promptFor("What is the person's gender? male or female", autoValid);
   let foundGender = people.filter(function(potentialMatch){
     if(potentialMatch.gender === gender){
       return true;
@@ -147,9 +149,9 @@ function searchByOccupation(people){
 }
 
 function searchByHeight(people){
-  let height = promptFor("How tall is the person?", autoValid);
+  let height = parseInt(promptFor("How tall is the person?", autoValid)); //parseInt turns string response into a numeric value.
   let foundHeight = people.filter(function(potentialMatch){
-    if(potentialMatch.Height === Height){
+    if(potentialMatch.height === height){
       return true;
     }
     else{
@@ -160,6 +162,21 @@ function searchByHeight(people){
 
 }
 
+function searchByTrait(people){
+  let traitFilter = people
+  traitFilter = searchByGender(traitFilter);
+  traitFilter = searchByEyeColor(traitFilter);
+  traitFilter = searchByHeight(traitFilter);
+  if (traitFilter.length < 2){
+    traitFilter = traitFilter[0]
+    return traitFilter;
+  }
+  traitFilter = searchByOccupation(traitFilter);
+  traitFilter = searchByDob(traitFilter);
+
+  traitFilter = traitFilter[0]
+  return traitFilter
+}
 //#endregion
 
 //Display functions.
