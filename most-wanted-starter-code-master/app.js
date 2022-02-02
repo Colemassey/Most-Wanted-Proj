@@ -46,7 +46,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-      displayPerson();
+      displayPerson(person);
     break;
     case "family":
     // TODO: get person's family
@@ -100,6 +100,10 @@ function searchByEyeColor(people){
       return false;
     }
   })
+  if(foundEyeColor.length === 0){
+    alert("There is no one with that eye color.")
+    return searchByEyeColor(people);
+  }
   return foundEyeColor
 
 }
@@ -116,8 +120,11 @@ function searchByGender(people){
       return false;
     }
   })
+  if(foundGender.length === 0){
+    alert("There is no one with that gender.")
+    return searchByGender(people);
+  }
   return foundGender
-
 }
 
 function searchByDob(people){
@@ -130,6 +137,10 @@ function searchByDob(people){
       return false;
     }
   })
+  if(foundDob.length === 0){
+    alert("There is no one with that date of birth.")
+    return searchByDob(people);
+  }
   return foundDob
 
 }
@@ -144,6 +155,10 @@ function searchByOccupation(people){
       return false;
     }
   })
+  if(foundOccupation.length === 0){
+    alert("There is no one with that eye color.")
+    return searchByOccupation(people);
+  }
   return foundOccupation
 
 }
@@ -158,29 +173,51 @@ function searchByHeight(people){
       return false;
     }
   })
+  if(foundHeight.length === 0){
+    alert("There is no one with that height.")
+    return searchByHeight(people);
+  } 
   return foundHeight
 
 }
 
 function searchByTrait(people){
   let traitFilter = people
+  let response = prompt("Would you like to search by gender? Enter 'yes' or 'no'.")
+  if(response === 'yes'){
   traitFilter = searchByGender(traitFilter);
+  alert(displayPeople(traitFilter));
+  }
+  response = prompt("Would you like to search by eye color? Enter 'yes' or 'no'.")
+  if(response === 'yes'){
   traitFilter = searchByEyeColor(traitFilter);
+  alert(displayPeople(traitFilter));
+  }
+  response = prompt("Would you like to search by height? Enter 'yes' or 'no'.")
+  if(response === 'yes'){
   traitFilter = searchByHeight(traitFilter);
+  alert(displayPeople(traitFilter));
   if (traitFilter.length < 2){
     traitFilter = traitFilter[0]
     return traitFilter;
-  }
+  }}
+  response = prompt("Would you like to search by occupation? Enter 'yes' or 'no'.")
+  if(response === 'yes'){
   traitFilter = searchByOccupation(traitFilter);
   if (traitFilter.length < 2){
     traitFilter = traitFilter[0]
     return traitFilter;
-  }
+  }}
+  response = prompt("Would you like to search by date of birth? Enter 'yes' or 'no'.")
+  if(response === 'yes'){
   traitFilter = searchByDob(traitFilter);
   if (traitFilter.length < 2){
     traitFilter = traitFilter[0]
     return traitFilter;
-  }
+  }}
+
+  //if/else, if there's more than one option left out we can display both options and user can choose from that
+  
   traitFilter = traitFilter[0]
   return traitFilter
 }
