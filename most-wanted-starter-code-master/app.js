@@ -15,7 +15,10 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      searchTrait = searchByEyeColor(people);
+      // searchResults = searchByEyeColor(people);
+      // searchResults = searchByGender(people);
+      // searchResults = searchByDob(people);
+      // searchResults = searchByOccupation
     // TODO: search by traits
       break;
       default:
@@ -87,7 +90,7 @@ function searchByName(people){
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
   let eyeColor = promptFor("What is the person's eye color?", autoValid);
-  let result = people.filter(function(potentialMatch){
+  let foundEyeColor = people.filter(function(potentialMatch){
     if(potentialMatch.eyeColor === eyeColor){
       return true;
     }
@@ -95,13 +98,67 @@ function searchByEyeColor(people){
       return false;
     }
   })
-  return result
+  return foundEyeColor
 
 }
 
 //TODO: add other trait filter functions here.
 
+function searchByGender(people){
+  let gender = promptFor("What is the person's gender? Male or Female", autoValid);
+  let foundGender = people.filter(function(potentialMatch){
+    if(potentialMatch.gender === gender){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return foundGender
 
+}
+
+function searchByDob(people){
+  let dob = promptFor("What is the person's date of birth? mm/dd/yyyy", autoValid);
+  let foundDob = people.filter(function(potentialMatch){
+    if(potentialMatch.dob === dob){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return foundDob
+
+}
+
+function searchByOccupation(people){
+  let occupation = promptFor("What is the person's job?", autoValid);
+  let foundOccupation = people.filter(function(potentialMatch){
+    if(potentialMatch.occupation === occupation){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return foundOccupation
+
+}
+
+function searchByHeight(people){
+  let height = promptFor("How tall is the person?", autoValid);
+  let foundHeight = people.filter(function(potentialMatch){
+    if(potentialMatch.Height === Height){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return foundHeight
+
+}
 
 //#endregion
 
