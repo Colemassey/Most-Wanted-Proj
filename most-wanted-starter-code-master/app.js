@@ -15,7 +15,8 @@ function app(people){
       searchResults = searchByName(people);
       break;
     case 'no':
-      // TODO: search by traits
+      searchTrait = searchByEyeColor(people);
+    // TODO: search by traits
       break;
       default:
     app(people); // restart app
@@ -28,7 +29,7 @@ function app(people){
 
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
-
+  
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
   if(!person){
@@ -78,12 +79,23 @@ function searchByName(people){
       return false;
     }
   })
+  foundPerson = foundPerson[0]
   // TODO: find the person single person object using the name they entered.
   return foundPerson;
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people){
+  let eyeColor = promptFor("What is the person's eye color?", autoValid);
+  let result = people.filter(function(potentialMatch){
+    if(potentialMatch.eyeColor === eyeColor){
+      return true;
+    }
+    else{
+      return false;
+    }
+  })
+  return result
 
 }
 
@@ -132,7 +144,7 @@ function promptFor(question, valid){
   do{
     var response = prompt(question).trim();
     isValid = valid(response);
-  } while(response === ""  ||  isValid === false)
+  } while(response === ""  ||  isValid === false) //write validation condition.
   return response;
 }
 
