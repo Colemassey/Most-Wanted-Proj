@@ -46,7 +46,7 @@ function mainMenu(person, people){
 
   switch(displayOption){
     case "info":
-    // TODO: get person's info
+      displayPerson();
     break;
     case "family":
     // TODO: get person's family
@@ -172,8 +172,15 @@ function searchByTrait(people){
     return traitFilter;
   }
   traitFilter = searchByOccupation(traitFilter);
+  if (traitFilter.length < 2){
+    traitFilter = traitFilter[0]
+    return traitFilter;
+  }
   traitFilter = searchByDob(traitFilter);
-
+  if (traitFilter.length < 2){
+    traitFilter = traitFilter[0]
+    return traitFilter;
+  }
   traitFilter = traitFilter[0]
   return traitFilter
 }
@@ -196,6 +203,11 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Weight: " + person.weight + "\n";
+  personInfo += "Age: " + person.dob + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
 }
@@ -240,8 +252,18 @@ function autoValid(input){
 
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
-function customValidation(input){
-  
-}
+// function customValidation(input){
+//   if{
+//     alert("True")
+//     continue;
+//   }
+//   else if(input = "" ){
+
+//   }
+//   else{
+//     alert("There is no one with that trait.")
+//     return false;
+//   }
+// }
 
 //#endregion
