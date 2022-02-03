@@ -253,17 +253,18 @@ function viewSpouse(people, currentSpouse){
       return false;
     }
     })
+
     displayPeople(filterSpouse);
     return filterSpouse;
 }
 
 function viewParents(people, child){
-  
-  let filterParent = people.map(function(person){
-    return person.parents
-  })
-    displayPeople(filterParent);
-    return filterParent;
+  let parentIdArray = child.parents
+  //filterParent is [409574486, 260451248]
+    let parents = parentIdArray.map(function(el){
+      return idDisplay(el, people);
+    })
+    displayPeople(parents);
 }
 
 
@@ -279,6 +280,20 @@ function displayPeople(people){
   alert(people.map(function(person){
     return person.firstName + " " + person.lastName;
   }).join("\n"));
+}
+
+function idDisplay(id, people){
+  let foundPerson = people.filter(function(potentialMatch){
+    if(potentialMatch.id === id){
+      return true;
+    }
+    else{
+      return false;
+    }
+  });
+
+  foundPerson = foundPerson[0]
+  return foundPerson;
 }
 
 function displayPerson(person){
