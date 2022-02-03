@@ -50,6 +50,8 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
+      viewSpouse(people, person);
+      // viewParents(people, person);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -241,6 +243,32 @@ function viewDescendants(people, parent){
     return filterDescendants;
 
 }
+
+function viewSpouse(people, currentSpouse){
+  let filterSpouse = people.filter(function(person){
+    if (person.currentSpouse.includes(currentSpouse.id)){
+      return true;
+    }
+    else{
+      return false;
+    }
+    })
+    return filterSpouse;
+}
+
+function viewParents(people, parents){
+  filterParent = people.filter(function(person){
+    if (person.parent.includes(parent.id)){
+      return true;
+    }
+      else{
+      return false;
+    }
+    })
+    displayPeople(filterParent)
+    return filterParent;
+}
+
 //#endregion
 
 //Display functions.
