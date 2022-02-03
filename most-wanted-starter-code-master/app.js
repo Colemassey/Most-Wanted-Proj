@@ -53,6 +53,7 @@ function mainMenu(person, people){
     break;
     case "descendants":
     // TODO: get person's descendants
+      viewDescendants(people, person);
     break;
     case "restart":
     app(people); // restart
@@ -217,13 +218,28 @@ function searchByTrait(people){
   }}
 
   if (traitFilter.length > 1){
-    displayPeople(traitFilter)
+    alert("These are the people who show the traits you searched.")
+    displayPeople(traitFilter);
     return app(people);
   }
   else {
     traitFilter = traitFilter[0]
     return traitFilter;
   }
+}
+
+function viewDescendants(people, parent){
+  let filterDescendants = people.filter(function(person){
+    if (person.parents.includes(parent.id)){
+      return true;
+    }
+    else{
+      return false;
+    }
+    })
+    displayPeople(filterDescendants)
+    return filterDescendants;
+
 }
 //#endregion
 
@@ -251,6 +267,7 @@ function displayPerson(person){
   personInfo += "Eye Color: " + person.eyeColor + "\n";
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
+  return mainMenu(person);
 }
 
 //#endregion
