@@ -246,7 +246,7 @@ function viewDescendants(people, parent){
 
 function viewSpouse(people, currentSpouse){
   let filterSpouse = people.filter(function(person){
-    if (person.currentSpouse.includes(currentSpouse.id)){
+    if (person.currentSpouse === currentSpouse.id){
       return true;
     }
     else{
