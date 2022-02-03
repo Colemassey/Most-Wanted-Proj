@@ -253,6 +253,7 @@ function viewSpouse(people, currentSpouse){
       return false;
     }
     })
+    displayPeople(filterSpouse);
     return filterSpouse;
 }
 
