@@ -216,10 +216,14 @@ function searchByTrait(people){
     return traitFilter;
   }}
 
-  //if/else, if there's more than one option left out we can display both options and user can choose from that
-  
-  traitFilter = traitFilter[0]
-  return traitFilter
+  if (traitFilter.length > 1){
+    displayPeople(traitFilter)
+    return app(people);
+  }
+  else {
+    traitFilter = traitFilter[0]
+    return traitFilter;
+  }
 }
 //#endregion
 
