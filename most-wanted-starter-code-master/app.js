@@ -16,12 +16,6 @@ function app(people){
       break;
     case 'no':
       searchResults = searchByTrait(people);
-      // searchResults = searchByEyeColor(people);
-      // searchResults = searchByGender(people);
-      // searchResults = searchByDob(people);
-      // searchResults = searchByOccupation(people);
-      // searchResults = searchByHeight(people);
-    // TODO: search by traits
       break;
       default:
     app(people); // restart app
@@ -51,7 +45,8 @@ function mainMenu(person, people){
     case "family":
     // TODO: get person's family
       //viewSpouse(people, person);
-      viewParents(people, person);
+      // viewParents(people, person);
+      viewSiblings(people, person);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -266,7 +261,18 @@ function viewParents(people, child){
     })
     displayPeople(parents);
 }
-
+function viewSiblings(people, sibling){
+  let siblings = people.filter(function(person){
+    if (sibling.parents[0] === person.parents[0]){
+      return true;
+    }
+    else{
+      return false;
+    }
+    })
+    displayPeople(siblings)
+    return siblings;
+}
 
 //#endregion
 
