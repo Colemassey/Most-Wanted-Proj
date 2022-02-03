@@ -263,7 +263,7 @@ function viewParents(people, child){
 }
 function viewSiblings(people, sibling){
   let siblings = people.filter(function(person){
-    if (sibling.parents[0] === person.parents[0]){
+    if (sibling.parents[0] === person.parents[0] || sibling.parents[1] === person.parents[1]){
       return true;
     }
     else{
