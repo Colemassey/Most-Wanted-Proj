@@ -44,7 +44,8 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
-      viewFamily(people, person)
+      viewFamily(people, person);
+      // viewSiblings(people, person);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -247,8 +248,7 @@ function viewSpouse(people, currentSpouse){
     }
     })
 
-    displayPeople(filterSpouse);
-    return filterSpouse;
+    return displayPeople(filterSpouse);
 }
 
 function viewParents(people, child){
@@ -257,7 +257,7 @@ function viewParents(people, child){
     let parents = parentIdArray.map(function(el){
       return idDisplay(el, people);
     })
-    displayPeople(parents);
+    return displayPeople(parents);
 }
 function viewSiblings(people, sibling){
   let siblings = people.filter(function(person){
@@ -268,19 +268,20 @@ function viewSiblings(people, sibling){
       return false;
     }
     })
-    displayPeople(siblings)
-    return siblings;
+    
+    return displayPeople(siblings);
 }
 
-function viewFamily(people){
+function viewFamily(people, person){
+//  displayPeople(parents, siblings, filterSpouse)
   alert("Parents of the person you searched for.");
-  familyFilter = viewParents(familyFilter);
+  viewParents(people, person);
 
   alert("Siblings of the person you searched for.")
-  familyFilter = viewSiblings(familyFilter);
+  viewSiblings(people, person);
 
   alert("Spouse of the person you searched for.")
-  familyFilter = viewSpouse(familyFilter);
+  viewSpouse(people, person);
 }
 
 //#endregion
