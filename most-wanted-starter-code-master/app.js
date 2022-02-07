@@ -49,7 +49,8 @@ function mainMenu(person, people){
     break;
     case "descendants":
     // TODO: get person's descendants
-      viewDescendants(people, person);
+      let descendants = viewDescendants(people, person);
+      displayPeople(descendants);
     break;
     case "restart":
     app(people); // restart
@@ -233,11 +234,12 @@ function viewDescendants(people, parent){
       return false;
     }
     })
-    for(i = 0, i < filterDescendants.length, i++){
-      viewDescendants(i);
+    for(let i = 0; i < filterDescendants.length; i++){
+      let descendants = viewDescendants(people, filterDescendants[i]);
+      filterDescendants = filterDescendants.concat(descendants);
     }
-    displayPeople(filterDescendants);
     return filterDescendants;
+    
   }    
 
 function viewSpouse(people, currentSpouse){
