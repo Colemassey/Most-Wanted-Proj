@@ -44,9 +44,7 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
-      //viewSpouse(people, person);
-      // viewParents(people, person);
-      viewSiblings(people, person);
+      viewFamily(people, person)
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -272,6 +270,17 @@ function viewSiblings(people, sibling){
     })
     displayPeople(siblings)
     return siblings;
+}
+
+function viewFamily(people){
+  alert("Parents of the person you searched for.");
+  familyFilter = viewParents(familyFilter);
+
+  alert("Siblings of the person you searched for.")
+  familyFilter = viewSiblings(familyFilter);
+
+  alert("Spouse of the person you searched for.")
+  familyFilter = viewSpouse(familyFilter);
 }
 
 //#endregion
