@@ -233,10 +233,12 @@ function viewDescendants(people, parent){
       return false;
     }
     })
-    displayPeople(filterDescendants)
+    for(i = 0, i < filterDescendants.length, i++){
+      viewDescendants(i);
+    }
+    displayPeople(filterDescendants);
     return filterDescendants;
-
-}
+  }    
 
 function viewSpouse(people, currentSpouse){
   let filterSpouse = people.filter(function(person){
@@ -260,14 +262,16 @@ function viewParents(people, child){
     return displayPeople(parents);
 }
 function viewSiblings(people, sibling){
-  let siblings = people.filter(function(person){
-    if (sibling.parents[0] === person.parents[0] || sibling.parents[1] === person.parents[1]){
-      return true;
-    }
-    else{
-      return false;
-    }
-    })
+  let siblings = []
+  if (sibling.parents.length > 0){
+    siblings = people.filter(function(person){
+      if(person.parents.includes(sibling.parents[0]) && person.id !== sibling.id){
+        return true
+      }
+      else{
+        return false
+      }
+      })}
     
     return displayPeople(siblings);
 }
