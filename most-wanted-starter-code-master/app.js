@@ -280,14 +280,15 @@ function viewSiblings(people, sibling){
 
 function viewFamily(people, person){
 //  displayPeople(parents, siblings, filterSpouse)
-  alert("Parents of the person you searched for.");
+  alert(`Parents of ${person.firstName + " " + person.lastName} are.`);
   viewParents(people, person);
 
-  alert("Siblings of the person you searched for.")
+  alert(`Siblings of ${person.firstName + " " + person.lastName} are.`)
   viewSiblings(people, person);
 
-  alert("Spouse of the person you searched for.")
+  alert(`Spouse of ${person.firstName + " " + person.lastName} are.`)
   viewSpouse(people, person);
+  return mainMenu(person);
 }
 
 //#endregion
@@ -370,6 +371,12 @@ function yesNo(input){
 function autoValid(input){
   return true; // default validation only
 }
+
+
+// function capitalizeFirstLetter(response) {
+//   return response.charAt(0).toUpperCase() + response.slice(1);
+// }
+
 
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
